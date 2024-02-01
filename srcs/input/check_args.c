@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfradet <nfradet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:47:47 by nfradet           #+#    #+#             */
-/*   Updated: 2024/01/28 21:29:20 by nfradet          ###   ########.fr       */
+/*   Updated: 2024/02/01 01:36:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,13 @@ int	check_args(int argc, char **argv)
 	int	i;
 
 	if (argc < 5 || argc > 6)
-	{
-		printf("Invalid number of arguments\n");
-		return (1);
-	}
+		return (handle_error(INVALID_ARGS_ERR));
 	i = 1;
 	while (argv[i])
 	{
 		if (is_valid_int(argv[i]) == 1)
-		{
-			printf("Invalid arguments type");
-			return (1);
-		}
+			return (handle_error(INVALID_ARGS_ERR));
 		i++;
 	}
 	return (0);
-}
-
-void	extract_args(t_data *data, char **args)
-{
-	data->nb_philo = ft_longatoi(args[1]);
-	data->time_die = ft_longatoi(args[2]);
-	data->time_eat = ft_longatoi(args[3]);
-	data->time_sleep = ft_longatoi(args[4]);
-	if (args[5] != NULL)
-		data->must_eat = ft_longatoi(args[5]);
-	else
-		data->must_eat = -1;
 }
