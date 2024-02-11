@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nfradet <nfradet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:56:13 by nfradet           #+#    #+#             */
-/*   Updated: 2024/02/01 01:53:57 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/11 19:09:10 by nfradet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	t_philo	*philos;
 
 	if (check_args(argc, argv) || init_args(&data, argv))
 		return (EXIT_FAILURE);

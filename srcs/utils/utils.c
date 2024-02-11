@@ -23,3 +23,12 @@ size_t	ft_strlen(const char *s)
 	}
 	return (count);
 }
+
+int	get_time_millisec(void)
+{
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL) == -1)
+		return(handle_error(TIME_OF_DAY_ERR));
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
