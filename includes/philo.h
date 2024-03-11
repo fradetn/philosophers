@@ -6,7 +6,7 @@
 /*   By: nfradet <nfradet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:56:53 by nfradet           #+#    #+#             */
-/*   Updated: 2024/03/11 09:42:54 by nfradet          ###   ########.fr       */
+/*   Updated: 2024/03/11 11:23:27 by nfradet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,5 @@ void		sleep_n_think(t_philo *philo);
 void		watch_simulation(t_data *data);
 int			should_end(t_data	*data);
 int			get_satisfied(t_data *data);
-
 
 #endif
