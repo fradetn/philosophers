@@ -14,15 +14,28 @@
 
 int	handle_error(t_data *data, char *err_msg)
 {
+	int	i;
+
 	if (data != NULL)
 	{
 		if (data->philos != NULL)
 			free(data->philos);
-		else if (data->mutex_fork != NULL)
+		if (data->mutex_fork != NULL)
+		{
+			i = 0;
+			while (i < data->nb_philo)
+				pthread_mutex_destroy(&(data->mutex_fork[i++]));
 			free(data->mutex_fork);
+			pthread_mutex_destroy(&(data->mutex_print));
+			pthread_mutex_destroy(&(data->mutex_program));
+			pthread_mutex_destroy(&(data->mutex_eating));
+		}
 	}
-	write(STDERR_FILENO, "Error: ", 7);
-	write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
-	write(STDERR_FILENO, "\n", 1);
+	if (err_msg != NULL)
+	{
+		write(STDERR_FILENO, "Error: ", 7);
+		write(STDERR_FILENO, err_msg, ft_strlen(err_msg));
+		write(STDERR_FILENO, "\n", 1);
+	}
 	return (EXIT_FAILURE);
 }

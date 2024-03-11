@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nfradet <nfradet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 19:56:13 by nfradet           #+#    #+#             */
-/*   Updated: 2024/02/12 17:13:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/06 06:56:07 by nfradet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,6 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv) || init_data(&data, argv))
 		return (EXIT_FAILURE);
-
-	
-	// printf("number of philo: %d\n", data.nb_philo);
-	// printf("time to die: %d\n", data.time_die);
-	// printf("time to eat: %d\n", data.time_eat);
-	// printf("time to sleep: %d\n", data.time_sleep);
-	// printf("must eat: %d\n", data.must_eat);
-
-	// int i = 0;
-	// while (i < data.nb_philo)
-	// {
-	// 	printf("philo: %d\n", data.philos[i].id);
-	// 	printf("left fork: %d\n", data.philos[i].fork.l);
-	// 	printf("right fork: %d\n\n", data.philos[i].fork.r);
-	// 	i++;
-	// }
+	init_threads(&data);
+	handle_error(&data, NULL);
 }

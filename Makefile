@@ -17,7 +17,7 @@ YELLOW = \033[1;33m
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INC = -I./includes
-VPATH = srcs srcs/utils srcs/input
+VPATH = srcs srcs/utils srcs/input srcs/program
 RM = rm -rf
 
 UTILS = ft_longatoi.c\
@@ -27,10 +27,14 @@ UTILS = ft_longatoi.c\
 INPUT = init_args.c\
 		check_args.c
 
+PROGRAM = philo.c\
+		actions.c
+
 NAME = philo
 
 SRCS = $(UTILS)\
 		$(INPUT)\
+		$(PROGRAM)\
 		main.c
 
 OBJ_DIR = obj/
