@@ -28,7 +28,8 @@ INPUT = init_args.c\
 		check_args.c
 
 PROGRAM = philo.c\
-		actions.c
+		actions.c\
+		supervise.c
 
 NAME = philo
 

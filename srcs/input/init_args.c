@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int init_philos_mutex(t_data *data)
+int	init_philos_mutex(t_data *data)
 {
 	int	i;
 
@@ -20,8 +20,8 @@ int init_philos_mutex(t_data *data)
 	data->philos = malloc(sizeof(t_philo) * data->nb_philo);
 	data->mutex_fork = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
 	if (data->philos == NULL || data->mutex_fork == NULL)
-		return(handle_error(data, MALLOC_ERR));
-	while(i < data->nb_philo)
+		return (handle_error(data, MALLOC_ERR));
+	while (i < data->nb_philo)
 	{
 		data->philos[i].id = i;
 		data->philos[i].fork.l = (i + 1) % data->nb_philo;
@@ -71,7 +71,8 @@ int	init_threads(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		if (pthread_create(&(ph[i].thread), NULL, routine_thread, &(ph[i])) != 0)
+		if (pthread_create(&(ph[i].thread), NULL, \
+		routine_thread, &(ph[i])) != 0)
 			return (handle_error(data, THREAD_INIT_ERR));
 		i++;
 	}
@@ -83,5 +84,5 @@ int	init_threads(t_data *data)
 			return (handle_error(data, THREAD_JOIN_ERR));
 		i++;
 	}
-	return 0;
+	return (0);
 }

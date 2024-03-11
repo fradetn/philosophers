@@ -6,7 +6,7 @@
 /*   By: nfradet <nfradet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 10:26:27 by nfradet           #+#    #+#             */
-/*   Updated: 2024/03/11 08:47:48 by nfradet          ###   ########.fr       */
+/*   Updated: 2024/03/11 09:44:17 by nfradet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	take_fork(t_philo *ph)
 	print_mutex("has taken a fork", ph, &(data->mutex_print));
 	pthread_mutex_lock(&(data->mutex_fork[ph->fork.r]));
 	print_mutex("has taken a fork", ph, &(data->mutex_print));
-
 }
 
 void	drop_fork(t_philo *ph)
@@ -52,11 +51,21 @@ void	eat(t_philo *philo)
 
 void	sleep_n_think(t_philo *philo)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = philo->data;
 	print_mutex("is sleeping", philo, &(data->mutex_print));
 	if (should_end(philo->data) != 1)
 		ft_sleep(data->time_sleep);
 	print_mutex("is thinking", philo, &(data->mutex_print));
+}
+
+void	*one_philo_case(t_philo *philo)
+{
+	pthread_mutex_lock(&(philo->data->mutex_program));
+	philo->last_meal = get_time_ms();
+	pthread_mutex_unlock(&(philo->data->mutex_program));
+	print_mutex("has taken a fork", philo, &(philo->data->mutex_print));
+	ft_sleep(philo->data->time_die);
+	return (NULL);
 }
